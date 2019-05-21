@@ -1,11 +1,20 @@
 const net = require('net');
 const readline = require('readline');
 var readlineSync = require('readline-sync');
+const chalk = require('chalk');
 
 const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout
 });
+
+
+colors = [
+  '\x1b[33m%s\x1b[0m',
+  '\x1b[36m%s\x1b[0m'
+]
+
+// console.log('\x1b[36m%s\x1b[0m', 'I am cyan');
 
 var nickname = 'pid'
 var updateData = false;
@@ -18,17 +27,18 @@ function clearConsole () {
 
 var client = net.connect({
 	port: 8282, 
-	host: 'localhost'
+	// host: '46.39.41.8'
+  host: 'localhost'
 
 }, 
 function() {
-	console.log('connected to server!'); 
+	console.log('\x1b[36m%s\x1b[0m', 'connected to server!'); 
 	checkRegister();
 });
 
 
 function checkRegister() {
-	rl.question(`Введите никнейм `, (answer) => {
+	rl.question(chalk.red(`Введите никнейм `), (answer) => {
 		nickname = answer;
 
 		client.write(JSON.stringify({
@@ -46,7 +56,7 @@ client.on('data', function(data) {
 	clearConsole();
 
 	for (let i = 0; i < dataJSON.length; i++) {
-		console.log(`${dataJSON[i].name} > ${dataJSON[i].message}`);
+		console.log('\x1b[33m%s\x1b[0m', `${dataJSON[i].name} > ${dataJSON[i].message}`);
 	}
 	
 	updateData = true;
@@ -64,7 +74,7 @@ client.on('data', function(data) {
 function readAndSend () {
 	updateData = false;
 
-	rl.question(`${nickname} > `, (answer) => {
+	rl.question(chalk.red(`${nickname} > `), (answer) => {
 
 		// var nickname = answer.split(' ')[0];
 

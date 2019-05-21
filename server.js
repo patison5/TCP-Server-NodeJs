@@ -8,7 +8,7 @@ var messages = []
 var tcpServer = net.createServer();
 
 tcpServer.on('connection', function(socket){
-	// console.log('connection established');
+	console.log('\x1b[36m%s\x1b[0m', 'connection established');
 	
 	socket.setEncoding('utf8');
 
