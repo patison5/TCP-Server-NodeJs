@@ -34,16 +34,16 @@ write Port (any u want, 8282 is the default)
 ## Demo
 
 <p align="center">
-  <h4>Connection to server</h4>
+  <span>Connection to server</span>
   <img src="https://github.com/patison5/TCP-Server-NodeJs/blob/master/img/demo/client-connect.png?raw=true" alt="Nodemon Logo">
 </p>
 
 <p align="center">
-  <h4>Chating</h4>
+  <span>Chating</span>
   <img src="https://github.com/patison5/TCP-Server-NodeJs/blob/master/img/demo/client.png?raw=true" alt="Nodemon Logo">
 </p>
 
 <p align="center">
-  <h4>Server demo</h4>
+  <span>Server demo</span>
   <img src="https://github.com/patison5/TCP-Server-NodeJs/blob/master/img/demo/server.png?raw=true" alt="Nodemon Logo">
 </p>
