@@ -70,7 +70,7 @@ function startMainLoop (IP, PORT) {
 	    );
 
 		rl.question(chalk.green(`Write nickname `), (answer) => {
-			nickname = (answer || "default user").toUpperCase();
+			nickname = (answer || "default_user").toUpperCase();
 
 			client.write(JSON.stringify({
 				'state': 'login',
@@ -87,6 +87,9 @@ function startMainLoop (IP, PORT) {
 		clearConsole();
 
 		for (let i = 0; i < dataJSON.length; i++) {
+
+			console.log('---------------------------------------------------------')
+
 			if (dataJSON[i].state != 'private') {
 				if (dataJSON[i].name === nickname)
 					console.log(chalk.green(`  ${dataJSON[i].name} > `), `${dataJSON[i].message}`);
@@ -110,6 +113,9 @@ function startMainLoop (IP, PORT) {
 
 	function readAndSend () {
 		updateData = false;
+
+		console.log(chalk.red('---------------------------------------------------------'))
+		// console.log('#########################################################')
 
 		rl.question(chalk.red(`  ${nickname} > `), (answer) => {
 
