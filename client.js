@@ -35,7 +35,7 @@ rl.question(chalk.green(`Введите IP `), (IP) => {
 
 function startMainLoop (IP, PORT) {
 	
-	console.log('Connecting to ', `${IP || 'localhost'}:${PORT || 8282}`)
+	console.log(chalk.green('Connecting to '), chalk.green(`${IP || 'localhost'}:${PORT || 8282}`))
 
 	var client = net.connect({
 		port: PORT || 8282, 
@@ -53,19 +53,24 @@ function startMainLoop (IP, PORT) {
 		console.log(
 			'\x1b[36m%s\x1b[0m',
 			'\n' +
-			'Welcome to my client-server courserwork!\n'+
-	        '\n' +
-	        '  ("`-’-/").___..--’’"`-._\n' +
-	        '   `6_ 6  )   `-.  (     ).`-.__.‘)\n' +
-	        '   (_Y_.)’  ._   )  `._ `. ``-..-’\n' +
-	        ' _..`--’_..-_/  /--’_.’ ,’\n' +
-	        '(il),-’‘  (li),’  ((!.-‘\n' +
-	        '\nCreated by ' +
-	        '— @patison5\n'
+			'========================================='+
+			'\n------------ TCP-CHAT-SERVER ------------\n' +
+			'=========================================\n\n'+
+			'         WELCOME TO MY COURSEWORK!\n\n'+
+
+	        '        ("`-’-/").___..--’’"`-._\n' +
+	        '         `6_ 6  )   `-.  (     ).`-.__.‘)\n' +
+	        '         (_Y_.)’  ._   )  `._ `. ``-..-’\n' +
+	        '       _..`--’_..-_/  /--’_.’ ,’\n' +
+	        '      (il),-’‘  (li),’  ((!.-‘\n' +
+	        '\n              - Created by - \n' +
+	        '========================================='+
+			'\n--------------- @patison5 ---------------\n' +
+			'=========================================\n\n'
 	    );
 
 		rl.question(chalk.green(`Введите никнейм `), (answer) => {
-			nickname = answer.toUpperCase();
+			nickname = (answer || "default user").toUpperCase();
 
 			client.write(JSON.stringify({
 				'state': 'login',
