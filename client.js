@@ -23,8 +23,8 @@ function clearConsole () {
 	process.stdout.write('\033c');
 }
 
-rl.question(chalk.green(`Введите IP `), (IP) => {
-	rl.question(chalk.green(`Введите PORT `), (PORT) => {
+rl.question(chalk.green(`Write IP `), (IP) => {
+	rl.question(chalk.green(`Write PORT `), (PORT) => {
 
 		startMainLoop(IP, PORT);
 	});
@@ -69,7 +69,7 @@ function startMainLoop (IP, PORT) {
 			'=========================================\n\n'
 	    );
 
-		rl.question(chalk.green(`Введите никнейм `), (answer) => {
+		rl.question(chalk.green(`Write nickname `), (answer) => {
 			nickname = (answer || "default user").toUpperCase();
 
 			client.write(JSON.stringify({
@@ -89,7 +89,7 @@ function startMainLoop (IP, PORT) {
 		for (let i = 0; i < dataJSON.length; i++) {
 			if (dataJSON[i].state != 'private') {
 				if (dataJSON[i].name === nickname)
-					console.log(`  ${dataJSON[i].name} > `, `${dataJSON[i].message}`);
+					console.log(chalk.green(`  ${dataJSON[i].name} > `), `${dataJSON[i].message}`);
 				else
 					console.log('\x1b[33m%s\x1b[0m', `  ${dataJSON[i].name} > `, `${dataJSON[i].message}`);
 			} 
@@ -113,7 +113,7 @@ function startMainLoop (IP, PORT) {
 
 		rl.question(chalk.red(`  ${nickname} > `), (answer) => {
 
-			if (answer === "$0") {
+			if (answer === ":q") {
 				console.log(chalk.green("\т  Buy!..."))
 				client.end();
 				rl.close();
